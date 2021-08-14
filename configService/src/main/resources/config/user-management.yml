@@ -1,0 +1,52 @@
+server:
+  port: 8003
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        ConnectTimeout: 80000
+        ReadTimeout: 80000
+spring:
+  #cache:
+    #type: redis
+  #redis:
+    #host: localhost
+    #port: 6379
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: rentvehicledb
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: nyit.canada03@gmail.com
+    password: prabhjot
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: smtp.gmail.com
+          auth: true
+          starttls:
+            enable: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/
+ribbon:
+  eager-load:
+    enabled: true
+  ConnectTimeout: 800000
+  ReadTimeout: 800000
+  eureka:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false

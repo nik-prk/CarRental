@@ -1,0 +1,23 @@
+server:
+  port: 8006
+spring:
+  data:
+    mongodb:
+      database: rentvehicledb
+      port: 27017
+      host: localhost
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false

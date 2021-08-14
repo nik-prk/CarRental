@@ -1,0 +1,42 @@
+server:
+  port: 9001
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        ConnectTimeout: 80000
+        ReadTimeout: 80000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/
+ribbon:
+  eager-load:
+    enabled: true
+  ConnectTimeout: 800000
+  ReadTimeout: 800000
+  eureka:
+    enabled: true
+security:
+  jwt:
+    token:
+      secret-key: secret
+      expire-length: 3600000
+zuul:
+  prefix: /api
+  retryable: true
+  routes:
+    usermanagement:
+      path: /usermanagement/**
+      serviceId: user-management
+    vehiclemanagement:
+      path: /vehiclemanagement/**
+      serviceId: vehicle-management
+    filemanagement:
+      path: /filemanagement/**
+      serviceId: file-management
+    wallet:
+      path: /wallet/**
+      serviceId: wallet
